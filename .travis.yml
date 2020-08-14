@@ -11,7 +11,7 @@ jobs:
   include:
     - stage: build docker image
       script:
-      - docker build -t dockerpoc:2.0 .
+      - docker build -t docker.io:gandhir26/dockerpoc/devops .
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker push $DOCKER_USERNAME/${IMAGE_NAME}
