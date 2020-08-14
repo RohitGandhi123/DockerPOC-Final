@@ -11,7 +11,7 @@ jobs:
   include:
     - stage: build docker image
       script:
-      - docker build -t image:gandhir26/dockerpoc .
+      - docker build -t image:gandhir26 .
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker push $DOCKER_USERNAME/${IMAGE_NAME}
