@@ -16,6 +16,8 @@ jobs:
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker push $DOCKER_PUSH
+      - docker run --rm $DOCKER_PUSH/app cat index.html
+      
     - stage: test
       script: 
       - docker run --rm $DOCKER_PUSH/app cat index.html
