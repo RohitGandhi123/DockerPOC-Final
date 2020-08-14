@@ -6,13 +6,13 @@ env:
     - $IMAGE_NAME: dockerpoc
     - $DOCKER_USERNAME: gandhir26
     - $DOCKER_PASSWORD: Microsoft@123
-    - $DOCKER_PUSH: $DOCKER_USERNAME/$IMAGE_NAME
+    - $DOCKER_PUSH: gandhir26/dockerpoc
    
 jobs:
   include:
     - stage: build docker image
       script:
-      - docker build -t image:${DOCKER_PUSH} .
+      - docker build -t ${DOCKER_PUSH}:7 .
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - echo $DOCKER_PUSH
