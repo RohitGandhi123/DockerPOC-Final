@@ -14,7 +14,7 @@ jobs:
       - docker build -t image:gandhir26 .
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker push ${DOCKER_USERNAME}/${IMAGE_NAME}
+      - docker push ${DOCKER_USERNAME}
     - stage: test
       script: docker run --rm $DOCKER_USERNAME/${BASE_IMAGE} cat hello.txt
     - script: docker run --rm $DOCKER_USERNAME/${BASE_IMAGE} cat hello.txt
