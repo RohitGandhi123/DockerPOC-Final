@@ -12,7 +12,7 @@ jobs:
   include:
     - stage: build docker image
       script:
-      - docker build -t image:$DOCKER_PUSH .
+      - docker build -t image:${DOCKER_PUSH} .
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - echo $DOCKER_PUSH
