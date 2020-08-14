@@ -3,7 +3,7 @@ dist: trusty
 
 env:
   global:
-    - $IMAGE_NAME: dockerpoc/devops
+    - $IMAGE_NAME: dockerpoc
     - $DOCKER_USERNAME: gandhir26
     - $DOCKER_PASSWORD: Microsoft@123
    
@@ -11,7 +11,7 @@ jobs:
   include:
     - stage: build docker image
       script:
-      - docker build -t ${{ env.DOCKER_USERNAME }} ${{ IMAGE_NAME }} .
+      - docker build -t image:gandhir26/dockerpoc .
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker push $DOCKER_USERNAME/${IMAGE_NAME}
