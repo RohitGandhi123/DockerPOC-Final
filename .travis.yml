@@ -9,8 +9,7 @@ jobs:
   include:
     - stage: build docker image
       script:
-      - echo "$DOCKER_PASSWORD" | docker login -u="$DOCKER_USERNAME" --password-stdin
-      - docker build -t ${BASE_IMAGE} .
+      - docker build -t DockerPoc:2.0 .
       - docker images
       - docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/${BASE_IMAGE}
       - docker push $DOCKER_USERNAME/${BASE_IMAGE}
