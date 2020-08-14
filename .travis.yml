@@ -9,7 +9,7 @@ jobs:
   include:
     - stage: build docker image
       script:
-      - docker build -t dockerPoc:2.0 .
+      - docker build -t dockerpoc:2.0 .
       - docker images
       - docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/${BASE_IMAGE}
       - docker push $DOCKER_USERNAME/${BASE_IMAGE}
