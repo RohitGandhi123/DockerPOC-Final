@@ -3,7 +3,7 @@ dist: trusty
 
 env:
   global:
-    - IMAGE_NAME=ganeshpote1988/devops
+    - IMAGE_NAME=ganeshpote198/devops
    
 jobs:
   include:
