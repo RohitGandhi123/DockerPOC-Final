@@ -6,6 +6,7 @@ env:
     - $IMAGE_NAME: dockerpoc
     - $DOCKER_USERNAME: gandhir26
     - $DOCKER_PASSWORD: Microsoft@123
+    - $DOCKER_PUSH: $DOCKER_USERNAME/$IMAGE_NAME
    
 jobs:
   include:
@@ -14,6 +15,7 @@ jobs:
       - docker build -t image:gandhir26 .
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - echo $DOCKER_PUSH
       - docker push
     - stage: test
       script: docker run --rm $DOCKER_USERNAME/${BASE_IMAGE} cat hello.txt
