@@ -3,7 +3,7 @@ dist: trusty
 
 env:
   global:
-    - IMAGE_NAME=ganeshpote198/devops
+    - $IMAGE_NAME: dockerpoc/devops
     - $DOCKER_USERNAME: gandhir26
     - $DOCKER_PASSWORD: Microsoft@123
    
@@ -14,8 +14,7 @@ jobs:
       - docker build -t dockerpoc:2.0 .
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/${BASE_IMAGE}
-      - docker push $DOCKER_USERNAME/${BASE_IMAGE}
+      - docker push $DOCKER_USERNAME/${IMAGE_NAME}
     - stage: test
       script: docker run --rm $DOCKER_USERNAME/${BASE_IMAGE} cat hello.txt
     - script: docker run --rm $DOCKER_USERNAME/${BASE_IMAGE} cat hello.txt
