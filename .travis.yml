@@ -22,6 +22,6 @@ jobs:
     - stage: Kubernetes Install
       script: 
       - sudo mkdir -p /usr/local/bin/
-      - sudo install minikube /usr/local/bin/
+      - sudo install minikube
    
 
