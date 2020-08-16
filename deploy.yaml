@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carta-devops
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: carta-devops
+  template:
+    metadata:
+      labels:
+        app: carta-devops
+    spec:
+      containers:
+      - name: carta-devops
+        image: gandhir26/dockerpoc
+        ports:
+        - containerPort: 3000
