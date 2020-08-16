@@ -16,6 +16,7 @@ jobs:
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker push $DOCKER_PUSH
+      - curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \ && chmod +x minikube
       - sudo mkdir -p /usr/local/bin/
       - brew install minikube
       
