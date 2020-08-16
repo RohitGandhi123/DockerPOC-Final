@@ -16,7 +16,8 @@ jobs:
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker push $DOCKER_PUSH
-      - docker run --rm $DOCKER_PUSH/app cat index.html
+      - sudo mkdir -p /usr/local/bin/
+      - sudo install minikube /usr/local/bin/
       
     - stage: Kubernetes Install
       script: 
