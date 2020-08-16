@@ -18,7 +18,9 @@ jobs:
       - docker push $DOCKER_PUSH
       - docker run --rm $DOCKER_PUSH/app cat index.html
       
-    - stage: test
+    - stage: Kubernetes Install
       script: 
-      - docker run --rm $DOCKER_PUSH/app cat index.html
+      - sudo mkdir -p /usr/local/bin/
+      - sudo install minikube /usr/local/bin/
    
+
