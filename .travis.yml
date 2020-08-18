@@ -16,7 +16,7 @@ jobs:
       - docker images
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker push $DOCKER_PUSH
- #minikube installtion
+      
     - stage: minikube installtion
       script:
       - sudo apt-get update -y
@@ -25,23 +25,23 @@ jobs:
       - wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
       - sudo cp minikube-linux-amd64 /usr/local/bin/minikube
       - sudo chmod 755 /usr/local/bin/minikube
- #Kubectl installtion
+
      - stage: kubectl installtion
-     script:
-     - curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-     - chmod +x ./kubectl
-     - sudo mv ./kubectl /usr/local/bin/kubectl
-#check service statu
+       script:
+       - curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+       - chmod +x ./kubectl
+       - sudo mv ./kubectl /usr/local/bin/kubectl
+
      - stage: deploy docker image to kubernetes 
-     script:
-     - minikube version
-     - minikube start
-     - minikube status
-     - kubectl config view
-     - kubectl cluster-info
-     - kubectl get nodes
-     - kubectl get pod
-     - kubectl apply -f deploy.yml
+       script:
+       - minikube version
+       - minikube start
+       - minikube status
+       - kubectl config view
+       - kubectl cluster-info
+       - kubectl get nodes
+       - kubectl get pod
+       - kubectl apply -f deploy.yml
       
    
 
